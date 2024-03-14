@@ -64,4 +64,45 @@ return arr
 
 const onelineArray = (arr) => arr.map(el => el * 2)
 
-console.log(onelineArray([2,5,4]))
+//console.log(onelineArray([2,5,4]))
+
+/* create a function which takes two strings (p1 and p2) as arguments and returns a string
+stating the winner (rock, paper, scissors)
+
+*NOTE - Game conditions
+if p1 wins return the string "the winner is P1"
+if p2 wins return the string "the winner is P2"
+if they are the same then return "It's a draw"
+=== is a stick comparison*/
+
+function RPS(p1, p2) {
+    if (p1 === p2) return 'Its a draw'
+
+   else if (p1 === 'Rock' && p2 === 'Scissors') return 'The winner is p1'
+    else if (p1 === 'Paper' && p2 === 'Rock') return 'The winner is p1'
+    else if (p1 === 'Scissors' && p2 === 'paper') return 'The winner is p1'
+
+    else return 'The winner is p2'
+}
+
+//console.log(RPS('Scissors', 'paper'))
+
+//ANCHOR - ES6 JavaScript built in functions.
+function RPSTwo (p1, p2){
+
+    let obj = {
+        Rock: 'Scissors',
+        Scissors: 'Paper',
+        Paper: 'Rock'
+    }
+    return p1 === p2 ? "It's a draw" : obj[p1] === p2 ? "The winner is p1" : "The winner is p2"
+}
+//console.log(RPSTwo('Paper', 'Scissors'))
+
+//ANCHOR - JS built in function includes ()
+function RPSThree(p1, p2) {
+    const wins = ['RockScissors', 'PaperRock', 'ScissorsPaper']
+    return p1 === p2 ? "It's a draw" : `The winner is ${wins.includes(p1 + p2) ? 'p1' : 'p2'}`
+}
+
+console.log(RPSThree('Paper', 'Rock'))
