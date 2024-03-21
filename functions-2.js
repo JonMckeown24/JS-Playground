@@ -78,6 +78,7 @@ function findDuplicateNumbers(arr) {
 }
 
 //console.log(findDuplicateNumbers([1, 2, 3, 4, 5, 6, 5, 1]))
+// Below is the ES6 of the es5 above
 
 const findDuplicateNumbers2 = arr => [...new Set(arr.filter((value, index, array) => 
     array.indexOf(value) !== index))];
@@ -92,6 +93,7 @@ const ArraysDuplicateNumbers = arr => (
 )
 
 //console.log(ArraysDuplicateNumbers([1, 2, 3, 4, 5, 6, 5, 1]))
+// below is the ES5 of the ES6 above
 
 var ArraysDuplicateNumbers2 = function(arr) {
     arr = arr.filter(function(num, index, array) {
@@ -104,5 +106,66 @@ var ArraysDuplicateNumbers2 = function(arr) {
     return arr.length ? arr : null;
 };
 
-console.log(ArraysDuplicateNumbers2([1, 2, 3, 4, 5, 6, 5, 1]))
+//console.log(ArraysDuplicateNumbers2([1, 2, 3, 4, 5, 6, 5, 1]))
 
+// Create a function that takes an Array of numbers or letters and returns a string
+// arrayToString ([6,7,"Ali","Sonny",10]) -> "12345"
+
+function arrayToString(arr) {
+    let result = ""
+    for(let i=0; i < arr.length; i++) {
+        result = result + arr[i]
+    }
+    return result
+}
+
+//console.log(arrayToString([6, 7, "Ali", "Sonny", 10]))
+
+// Create a function that takes an array with numbers. transform that array into a mirror
+//arrToMirror([0,2,4,6,8]) output -> ([0,2,4,6,8,6,4,2,0])
+
+function arrayToMirror(arr) {
+    for(let i = arr.length-2; i>=0; i--) {
+        arr.push(arr[i])
+    }
+    return arr
+}
+//console.log(arrayToMirror([0,2,4,6,8]))
+
+//ES6
+
+const toMirror = arr => [...arr, ...arr.reverse().slice(1)]
+
+//console.log(toMirror([0,2,4,6,8]))
+
+//Create a function that returns the total number of arrays inside a given main array.
+// totalOfArrays([[1,2,3], [4,5,6]]) -> total number of arrays = 2
+
+function totalOfArrays(arr) {
+    let count = 0
+    for(let i=0; i < arr.length; i++) {
+        if(Array.isArray(arr[i])) {
+            count++
+        }
+    }
+    return count
+}
+//console.log(totalOfArrays([[1,2,3], [4,5,6], 10, []]))
+
+//Create a function that takes a number as an argument and returns an array of numbers
+//counting down from the given number to zero
+
+//Ex: arrayCountdown(5) output -> [5,4,3,2,1,0]
+
+function arrayCountDown(num) {
+    let array = [];
+    for (let i = num; i >= 0; i--) {
+        array.push(i);
+    }
+    return array;
+
+}
+//console.log(arrayCountDown(5))
+
+const countDownArray = (num) => Array.from(Array(num+1).keys()).reverse()
+console.log(countDownArray(10))
